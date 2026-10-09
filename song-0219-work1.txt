@@ -1,0 +1,246 @@
+帕门: 10-09 14:47:18
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>观鸟集 - 我的观鸟记录</title>
+    <style>
+        /* --- 基础重置 --- */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: '楷体', 'KaiTi', 'Comic Sans MS', cursive, sans-serif;
+            background-color: #f4f7f6;
+            color: #1a3a6b;
+            padding: 30px 20px;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        /* --- 主容器：手绘窗口风格 --- */
+        .app-container {
+            width: 100%;
+            max-width: 900px;
+            background: #fff;
+            border: 3px solid #333;
+            border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+            box-shadow: 5px 8px 20px rgba(0,0,0,0.1);
+            padding: 30px;
+            position: relative;
+        }
+
+        /* --- 顶部标题栏 --- */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            border-bottom: 2px dashed #ccc;
+            padding-bottom: 15px;
+        }
+
+        .header-title {
+            font-size: 28px;
+            font-weight: bold;
+            border: 3px solid #333;
+            border-radius: 10px 255px 10px 255px / 255px 10px 255px 10px;
+            padding: 5px 25px;
+            transform: rotate(-2deg);
+        }
+
+        .header-subtitle {
+            font-size: 14px;
+            color: #888;
+            font-style: italic;
+        }
+
+        /* --- 飞鸟装饰 (上方漂浮) --- */
+        .flying-bird {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 40px;
+            color: #1a3a6b;
+            opacity: 0.6;
+            animation: float 3s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateX(-50%) translateY(0) rotate(-5deg); }
+            50% { transform: translateX(-50%) translateY(-10px) rotate(-5deg); }
+        }
+
+        /* --- 鸟卡片网格 --- */
+        .bird-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        /* --- 单个卡片 --- */
+        .bird-card {
+            background: #fdfdfd;
+            border: 2px solid #333;
+            border-radius: 20px 200px 20px 200px / 200px 20px 200px 20px;
+            padding: 20px;
+            position: relative;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .bird-card:hover {
+            transform: translateY(-5px) rotate(1deg);
+            box-shadow: 4px 8px 15px rgba(26, 58, 107, 0.15);
+        }
+
+        /* --- 鸟图占位符 --- */
+        .bird-image {
+            width: 100%;
+            height: 140px;
+            background: #eef2ff;
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 50px;
+            margin-bottom: 15px;
+            border: 2px dashed #a0b4d0;
+        }
+
+        /* --- 鸟名字 --- */
+        .bird-name {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #1a3a6b;
+        }
+
+        /* --- 信息行 --- */
+        .bird-info {
+            font-size: 13px;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .bird-info span {
+            display: block;
+        }
+
+        /* --- 备注 --- */
+        .bird-note {
+            margin-top: 10px;
+            font-style: italic;
+            font-size: 13px;
+            color: #888;
+            border-top: 1px dashed #ddd;
+            padding-top: 8px;
+        }
+
+        /* --- 右下角装饰鸟 --- */
+        .deco-bird {
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            font-size: 60px;
+            opacity: 0.8;
+            animation: float 3s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        /* --- 响应式适配手机 --- */
+        @media (max-width: 600px) {
+            body { padding: 15px 10px; }
+            .app-container { padding: 20px; }
+            .header { flex-direction: column; align-items: flex-start; gap: 10px; }
+            .header-title { font-size: 22px; }
+            .deco-bird { font-size: 40px; bottom: 10px; right: 15px; }
+            .flying-bird { font-size: 30px; top: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 顶部飞鸟装饰 -->
+    <div class="flying-bird">🕊️</div>
+
+    <div class="app-container">
+        <!-- 顶部标题栏 -->
+        <div class="header">
+            <div class="header-title">观鸟集</div>
+            <div class="header-subtitle">🐦 记录身边飞过的精灵</div>
+        </div>
+
+        <!-- 鸟卡片列表 -->
+        <div class="bird-grid">
+
+            <!-- 卡片1：夜鹭 -->
+            <div class="bird-card">
+                <div class="bird-image">🐧</div>
+                <div class="bird-name">夜鹭</div>
+                <div class="bird-info">
+                    <span>📍 湖畔栈道</span>
+                    <span>📅 2024-06-18</span>
+                    <span>🔢 2 只</span>
+                </div>
+                <div class="bird-note">缩着脖子站在水边，像个黑色的小企鹅，一动也不动。</div>
+            </div>
+
+            <!-- 卡片2：白鹭 -->
+            <div class="bird-card">
+                <div class="bird-image">🕊️</div>
+                <div class="bird-name">白鹭</div>
+                <div class="bird-info">
+                    <span>📍 湿地公园</span>
+                    <span>📅 2024-05-12</span>
+                    <span>🔢 3 只</span>
+                </div>
+                <div class="bird-note">在水边静静站立，突然俯冲捕鱼。</div>
+            </div>
+
+            <!-- 卡片3：麻雀 -->
+            <div class="bird-card">
+                <div class="bird-image">🐦</div>
+                <div class="bird-name">麻雀</div>
+                <div class="bird-info">
+                    <span>📍 小区花园</span>
+                    <span>📅 2024-05-15</span>
+                    <span>🔢 一大群</span>
+                </div>
+                <div class="bird-note">叽叽喳喳，在灌木丛里跳来跳去。</div>
+            </div>
+
+            <!-- 卡片4：翠鸟 -->
+            <div class="bird-card">
+                <div class="bird-image">🦜</div>
+                <div class="bird-name">翠鸟</div>
+                <div class="bird-info">
+                    <span>📍 河边柳树</span>
+                    <span>📅 2024-06-02</span>
+                    <span>🔢 1 只</span>
+                </div>
+                <div class="bird-note">羽毛蓝绿相间，像一颗宝石划过水面。</div>
+            </div>
+
+            <!-- 卡片5：猫头鹰 -->
+            <div class="bird-card">
+                <div class="bird-image">🦉</div>
+                <div class="bird-name">猫头鹰</div>
+                <div class="bird-info">
+                    <span>📍 后山树林</span>
+                    <span>📅 2024-06-10</span>
+                    <span>🔢 2 只</span>
+                </div>
+                <div class="bird-note">晚上听到“咕咕”声，手电筒照到一只。</div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 右下角装饰小鸟 -->
+    <div class="deco-bird">🐧</div>
+
+</body>
+</html>
