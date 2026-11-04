@@ -1,0 +1,247 @@
+<head>
+<meta charset="UTF-8">
+<title>校园大提琴社 - 2026春季招新</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.8;color:#2c3e50;background:#f8f9fa}
+  #musicBtn{position:fixed;bottom:30px;right:30px;z-index:999;background:#8b3a3a;color:#fff;border:none;border-radius:30px;padding:12px 24px;font-size:15px;font-weight:bold;cursor:pointer;box-shadow:0 4px 15px rgba(139,58,58,.4);transition:all .3s}
+  #musicBtn:hover{background:#6d2e2e;transform:translateY(-3px);box-shadow:0 6px 20px rgba(139,58,58,.6)}
+  nav{position:sticky;top:0;z-index:900;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);box-shadow:0 2px 10px rgba(0,0,0,.05);display:flex;justify-content:center;padding:15px 0}
+  nav a{color:#34495e;text-decoration:none;margin:0 25px;font-size:16px;font-weight:500;position:relative;transition:color .3s}
+  nav a::after{content:'';position:absolute;width:0;height:2px;bottom:-5px;left:50%;background:#8b3a3a;transition:all .3s;transform:translateX(-50%)}
+  nav a:hover{color:#8b3a3a}
+  nav a:hover::after{width:100%}
+  .banner{background:linear-gradient(135deg,#2c3e50 0%,#4a2c2c 100%);color:#fff;text-align:center;padding:80px 20px}
+  .banner h1{font-size:36px;letter-spacing:2px;margin-bottom:15px;font-weight:bold}
+  .banner p{font-size:18px;opacity:.9}
+  section{max-width:1000px;margin:40px auto;background:#fff;padding:40px;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,.04)}
+  h2{color:#2c3e50;font-size:24px;margin-bottom:24px;display:flex;align-items:center}
+  h2::before{content:'';display:inline-block;width:6px;height:24px;background:#8b3a3a;margin-right:12px;border-radius:4px}
+  p{font-size:16px;color:#555;margin-bottom:16px;text-align:justify}
+  .backTop{display:inline-block;margin-top:20px;color:#8b3a3a;text-decoration:none;font-weight:bold;font-size:14px;transition:transform .3s}
+  .backTop:hover{transform:translateX(-5px)}
+  table{width:100%;border-collapse:collapse;margin:20px 0;font-size:15px;box-shadow:0 2px 10px rgba(0,0,0,.05)}
+  th,td{border:1px solid #eee;padding:15px;text-align:center}
+  thead th{background:#f1f3f6;color:#2c3e50;font-weight:bold}
+  tbody tr{transition:background .3s}
+  tbody tr:hover{background:#fcf8f8}
+  .pic-wrap{text-align:center;margin:30px 0}
+  .pic-wrap a{display:inline-block;position:relative;overflow:hidden;border-radius:12px;box-shadow:0 8px 25px rgba(0,0,0,.15)}
+  .pic-wrap img{max-width:100%;height:auto;display:block;transition:transform .4s ease}
+  .pic-wrap a:hover img{transform:scale(1.05)}
+  .pic-hint{text-align:center;color:#888;font-size:14px;margin-top:12px}
+  .video-box{text-align:center;margin:30px 0;background:#000;border-radius:12px;overflow:hidden;box-shadow:0 8px 25px rgba(0,0,0,.15)}
+  video{max-width:100%;width:800px;display:block;margin:0 auto;outline:none}
+  .story-card{background:#fafafa;border-left:4px solid #8b3a3a;padding:20px;margin-bottom:20px;border-radius:0 8px 8px 0}
+  .story-card h3{font-size:18px;color:#2c3e50;margin-bottom:10px}
+  form{background:#fafafa;padding:30px;border-radius:12px}
+  form table{box-shadow:none;margin:0}
+  form th,form td{border:none;border-bottom:1px dashed #e0e0e0;padding:16px 10px}
+  form td:first-child{width:180px;text-align:right;font-weight:bold;color:#444;padding-right:20px}
+  form tr:last-child td{border-bottom:none}
+  form input[type=text],form input[type=email],form select,form textarea{width:100%;max-width:400px;padding:10px 14px;border:1px solid #ddd;border-radius:6px;font-family:inherit;font-size:15px;transition:border-color .3s}
+  form input[type=text]:focus,form input[type=email]:focus,form select:focus,form textarea:focus{border-color:#8b3a3a;outline:none}
+  form textarea{height:120px;resize:vertical;max-width:100%}
+  form label{margin-right:20px;cursor:pointer}
+  form input[type=radio],form input[type=checkbox]{margin-right:6px;accent-color:#8b3a3a}
+  .btn-group{text-align:center;padding-top:20px;border-top:1px solid #eee}
+  .btn-group input{padding:12px 40px;margin:0 10px;border:none;border-radius:30px;cursor:pointer;font-size:16px;font-weight:bold;transition:all .3s}
+  .btn-group input[type=submit]{background:#8b3a3a;color:#fff;box-shadow:0 4px 15px rgba(139,58,58,.4)}
+  .btn-group input[type=submit]:hover{background:#6d2e2e;transform:translateY(-2px)}
+  .btn-group input[type=reset]{background:#fff;color:#666;border:1px solid #ccc}
+  .btn-group input[type=reset]:hover{background:#f0f0f0}
+  footer{text-align:center;padding:40px;color:#999;font-size:14px}
+</style>
+</head>
+<body>
+
+<button id="musicBtn">🎵 播放背景音乐</button>
+<audio id="bgMusic" loop>
+  <source src="bgm.mp3" type="audio/mpeg">
+</audio>
+
+<nav>
+  <a href="#intro">社团简介</a>
+  <a href="#schedule">活动安排</a>
+  <a href="#show">风采展示</a>
+  <a href="#story">社员故事</a>
+  <a href="#signup">在线报名</a>
+</nav>
+
+<header class="banner">
+  <h1>校园大提琴社 2026 招新</h1>
+  <p>聆听深沉之音，遇见优雅自己</p>
+</header>
+
+<section id="intro">
+  <h2>一、大提琴社简介</h2>
+  <p>校园大提琴社成立于2015年，是学校内最具古典气息与艺术底蕴的社团之一。社团以大提琴为核心，致力于推广古典音乐与弦乐艺术，为热爱音乐的同学提供一个专业且温馨的交流平台。</p>
+  <p>无论你是零基础的新手，还是已经具备一定演奏水平的乐手，只要对大提琴和古典音乐有兴趣，都欢迎加入我们。社团会安排专业老师和高年级骨干进行指导，帮助你从基础指法、运弓技巧到舞台表现逐步提升。</p>
+  <p>社团日常活动地点主要在学生活动中心的弦乐排练厅，每周安排固定的声部排练与合奏时间，并定期举办室内乐音乐会，为各种校园文艺演出做准备。</p>
+  <a href="#" class="backTop">↑ 返回顶部</a>
+</section>
+
+<section id="schedule">
+  <h2>二、本学期主要活动安排</h2>
+  <p>为了让大家更好地了解大提琴社的日常，本学期计划安排如下几项主要活动。具体时间可能会根据学校统一安排略作调整。</p>
+  <table>
+    <thead>
+      <tr><th colspan="4">大提琴社 2026 年春季学期活动安排表</th></tr>
+      <tr><th>活动名称</th><th>活动时间</th><th>活动地点</th><th>负责人</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>新成员见面会</td><td>3月第2周 周五晚</td><td rowspan="2">学生活动中心 弦乐排练厅 302</td><td>陈秋</td></tr>
+      <tr><td>大提琴基础教学公开课</td><td>3月第3周 周六下午</td><td>林雅</td></tr>
+      <tr><td>古典室内乐赏析沙龙</td><td>4月第2周 周日</td><td>图书馆 艺术阅览室</td><td>赵洋</td></tr>
+      <tr><td>“琴韵春晓”期末专场音乐会</td><td>6月第1周 周六晚</td><td>大学生活动中心 大礼堂</td><td>孙诺</td></tr>
+    </tbody>
+  </table>
+  <p>上表仅列出了部分代表性活动，日常还会有声部合排、乐理小课堂等，欢迎有想法、有创意的同学参与策划。</p>
+  <a href="#" class="backTop">↑ 返回顶部</a>
+</section>
+
+<section id="show">
+  <h2>三、大提琴社风采展示</h2>
+  <p>下面是一张往届大提琴社演出的照片。点击图片，可以查看更详细的活动介绍页面。</p>
+  <div class="pic-wrap">
+    <a href="club_intro.html" target="_blank">
+      <img src="band.jpg" alt="大提琴演奏现场">
+    </a>
+    <div class="pic-hint">点击图片查看活动详情</div>
+  </div>
+  <p>图为上学期“秋日私语”音乐会上，大提琴社成员的集体演出场景。平时的刻苦训练，都会在正式演出中化为动人的旋律。</p>
+  
+  <h2 style="margin-top:40px;">宣传视频展示</h2>
+  <p>下面演示如何在页面中嵌入一段大提琴社的宣传视频。</p>
+  <div class="video-box">
+    <video controls preload="metadata" width="100%">
+      <source src="club.mp4" type="video/mp4">
+      <p style="color:#fff; padding:20px;">您的浏览器不支持视频播放，或者视频文件（club.mp4）未找到。</p>
+    </video>
+  </div>
+  <a href="#" class="backTop">↑ 返回顶部</a>
+</section>
+
+<section id="story">
+  <h2>四、社员故事（节选）</h2>
+  <div class="story-card">
+    <h3>从零基础到舞台首秀</h3>
+    <p>小林大一加入大提琴社时完全不会拉琴。在学长学姐的帮助下，她从最基本的持琴姿势和握弓练起，每天坚持在琴房练习半小时。一个学期后，她已经能独立完整地拉奏一首《小步舞曲》，并在期末音乐会上完成了自己的首秀。</p>
+  </div>
+  <div class="story-card">
+    <h3>在低音中寻找平静</h3>
+    <p>大提琴的音色深沉内敛。小王是个性格急躁的同学，刚入社时总是拉不好长弓。后来在老师指导下，他慢慢静下心来体会运弓的呼吸感。音乐不仅改变了他的演奏，也让他能在忙碌的学业中保持从容与平静。</p>
+  </div>
+  <div class="story-card">
+    <h3>因大提琴结识知音</h3>
+    <p>加入大提琴社最大的收获，是认识了一群热爱古典乐的知音。大家一起排练重奏、交流喜欢的演奏家，在琴声与陪伴中，大学生活变得更加丰富多彩。</p>
+  </div>
+  <p>如果你也喜欢音乐，期望在大学生活中拥有一段与大提琴相关的美好回忆，欢迎加入我们，一起在琴弦上拉奏青春的乐章。</p>
+  <a href="#" class="backTop">↑ 返回顶部</a>
+</section>
+
+<section id="signup">
+  <h2>五、大提琴社在线报名表</h2>
+  <p>请认真填写以下信息，确保联系方式准确无误。提交后，社团会通过电话或短信的方式通知面谈或试音时间。</p>
+  <form action="#" method="post">
+    <table>
+      <tr>
+        <td>姓名：</td>
+        <td><input type="text" name="name" required></td>
+      </tr>
+      <tr>
+        <td>性别：</td>
+        <td>
+          <label><input type="radio" name="gender" value="男" checked> 男</label>
+          <label><input type="radio" name="gender" value="女"> 女</label>
+        </td>
+      </tr>
+      <tr>
+        <td>出生日期：</td>
+        <td>
+          <input type="text" name="year" style="width:80px;" placeholder="年"> 年
+          <input type="text" name="month" style="width:60px;margin-left:10px;" placeholder="月"> 月
+          <input type="text" name="day" style="width:60px;margin-left:10px;" placeholder="日"> 日
+        </td>
+      </tr>
+      <tr>
+        <td>联系方式：</td>
+        <td>
+          <div style="margin-bottom:12px;">手机：<input type="text" name="phone" style="width:250px;display:inline-block;"></div>
+          <div>邮箱：<input type="email" name="email" style="width:250px;display:inline-block;"></div>
+        </td>
+      </tr>
+      <tr>
+        <td>是否有大提琴基础：</td>
+        <td>
+          <label><input type="radio" name="base" value="无基础" checked> 无基础</label>
+          <label><input type="radio" name="base" value="会几首简单曲目"> 会几首简单曲目</label>
+          <label><input type="radio" name="base" value="可独立演奏"> 可独立演奏</label>
+        </td>
+      </tr>
+      <tr>
+        <td>兴趣方向：</td>
+        <td>
+          type="checkbox" name="interest" value="独奏"> 独奏</label>
+          <label><input type="checkbox" name="interest" value="重奏/室内乐"> 重奏/室内乐</label>
+          <label><input type="checkbox" name="interest" value="交响乐团"> 交响乐团</label>
+          <label><input type="checkbox" name="interest" value="乐理与视唱练耳"> 乐理与视唱练耳</label>
+        </td>
+      </tr>
+      <tr>
+        <td>年级：</td>
+        <td>
+          <select name="grade">
+            <option>大一</option>
+            <option>大二</option>
+            <option>大三</option>
+            <option>大四</option>
+            <option>研究生</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>自我介绍：</td>
+        <td><textarea name="intro" placeholder="请简单介绍自己、以及加入大提琴社的理由……"></textarea></td>
+      </tr>
+      <tr>
+        <td>是否服从活动安排：</td>
+        <td>
+          <label><input type="radio" name="obey" value="是" checked> 是</label>
+          <label><input type="radio" name="obey" value="否"> 否</label>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td class="btn-group">
+          <input type="submit" value="提交报名">
+          <input type="reset" value="重置表单">
+        </td>
+      </tr>
+    </table>
+  </form>
+  <a href="#" class="backTop">↑ 返回顶部</a>
+</section>
+
+<footer>
+  © 2026 校园大提琴社 · 期待与你共鸣
+</footer>
+
+<script>
+  const musicBtn = document.getElementById('musicBtn');
+  const bgMusic = document.getElementById('bgMusic');
+  let isPlaying = false;
+  
+  musicBtn.addEventListener('click', function() {
+    if (isPlaying) {
+      bgMusic.pause();
+      musicBtn.innerHTML = '🎵 播放背景音乐';
+    } else {
+      bgMusic.play();
+      musicBtn.innerHTML = '⏸ 暂停背景音乐';
+    }
+    isPlaying = !isPlaying;
+  });
+</script>
+</body>
+</html>
